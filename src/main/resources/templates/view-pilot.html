@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>View Detail</title>
+        <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+        <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+    </head>
+    <body>
+        <nav th:replace="fragments/fragment :: navbar"></nav>
+        <h3 th:text="${pilot.id}"></h3>
+        <h3 th:text="${pilot.licenseNumber}"></h3>
+        <h3 th:text="${pilot.name}"></h3>
+        <h3 th:text="${pilot.flyHour}"></h3>
+        <a th:href="@{'/flight/add/' + ${pilot.licenseNumber}}">Add Flight</a>
+    </body>
+</html>
