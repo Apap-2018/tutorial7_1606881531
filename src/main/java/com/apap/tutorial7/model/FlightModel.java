@@ -6,12 +6,44 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name="flight")
 public class FlightModel implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @NotNull
+    @Size(max = 50)
+    @Column(name = "flight_number", nullable = false)
+    private String flightNumber;
+
+    @NotNull
+    @Size(max = 50)
+    @Column(name = "origin", nullable = false)
+    private String origin;
+
+    @NotNull
+    @Size(max=50)
+    @Column(name = "destination", nullable = false)
+    private String destination;
+
+    @NotNull
+    @Column(name = "time")
+    private Date time;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "pilot_licenseNumber", referencedColumnName = "license_number", nullable = false)
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
+    @JsonIgnoreProperties("pilotFlight")
+    private PilotModel pilot;
+
     public long getId() {
         return id;
     }
@@ -59,34 +91,5 @@ public class FlightModel implements Serializable {
     public void setPilot(PilotModel pilot) {
         this.pilot = pilot;
     }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    @NotNull
-    @Size(max = 50)
-    @Column(name = "flight_number", nullable = false)
-    private String flightNumber;
-
-    @NotNull
-    @Size(max = 50)
-    @Column(name = "origin", nullable = false)
-    private String origin;
-
-    @NotNull
-    @Size(max=50)
-    @Column(name = "destination", nullable = false)
-    private String destination;
-
-    @NotNull
-    @Column(name = "time")
-    private Date time;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pilot_licenseNumber", referencedColumnName = "license_number", nullable = false)
-    @OnDelete(action = OnDeleteAction.NO_ACTION)
-    @JsonIgnore
-    private PilotModel pilot;
 
 }

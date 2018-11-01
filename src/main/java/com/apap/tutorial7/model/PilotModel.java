@@ -1,5 +1,7 @@
 package com.apap.tutorial7.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -83,5 +85,6 @@ public class PilotModel implements Serializable {
     private int flyHour;
 
     @OneToMany(mappedBy = "pilot", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @JsonIgnoreProperties("pilot")
     private List<FlightModel> pilotFlight = new ArrayList<FlightModel>();
 }

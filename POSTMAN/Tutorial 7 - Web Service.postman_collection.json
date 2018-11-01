@@ -1,0 +1,578 @@
+{
+	"info": {
+		"_postman_id": "8ff84818-2f9b-4e96-b65e-4d067cdff62b",
+		"name": "Tutorial 7 - Web Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Pilot",
+			"item": [
+				{
+					"name": "Mock",
+					"item": [
+						{
+							"name": "Get status",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{pilot}}/pilot?licenseNumber=12345",
+									"host": [
+										"{{pilot}}"
+									],
+									"path": [
+										"pilot"
+									],
+									"query": [
+										{
+											"key": "licenseNumber",
+											"value": "12345"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Status",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{pilot}}/pilot?licenseNumber=12345",
+											"host": [
+												"{{pilot}}"
+											],
+											"path": [
+												"pilot"
+											],
+											"query": [
+												{
+													"key": "licenseNumber",
+													"value": "12345"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json;charset=UTF-8",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\n\t\"status\" : \"inactive\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Get full status",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"flyHour\" : 600,\n\t\"licenseNumber\" : \"777\",\n\t\"name\" : \"dia\"\n}"
+								},
+								"url": {
+									"raw": "{{pilot}}/pilot",
+									"host": [
+										"{{pilot}}"
+									],
+									"path": [
+										"pilot"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "full",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"flyHour\" : 600,\n\t\"licenseNumber\" : \"777\",\n\t\"name\" : \"dia\"\n}"
+										},
+										"url": {
+											"raw": "{{pilot}}/pilot",
+											"host": [
+												"{{pilot}}"
+											],
+											"path": [
+												"pilot"
+											]
+										}
+									},
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json;charset=UTF-8",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\n\t\"status\" :\t\"inactive\",\n\t\"valid-until\" : \"2025-20-30\"\n}"
+								}
+							]
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "bb80acde-7672-4e0a-a8b6-bf6b96cc8af2",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "12b24b61-079d-4840-b0b8-802d9c54e3c7",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Get a Pilot",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url-tutorial7}}/pilot/view/12345",
+							"host": [
+								"{{url-tutorial7}}"
+							],
+							"path": [
+								"pilot",
+								"view",
+								"12345"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a pilot",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"flyHour\" : 111,\n\t\"licenseNumber\" : \"1111\",\n\t\"name\" : \"yana\"\n}"
+						},
+						"url": {
+							"raw": "{{url-tutorial7}}/pilot/add",
+							"host": [
+								"{{url-tutorial7}}"
+							],
+							"path": [
+								"pilot",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Pilot",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url-tutorial7}}/pilot/delete?pilotId=3",
+							"host": [
+								"{{url-tutorial7}}"
+							],
+							"path": [
+								"pilot",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "pilotId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Pilot",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url-tutorial7}}/pilot/update/3?name=Dihar&flyHour=1234",
+							"host": [
+								"{{url-tutorial7}}"
+							],
+							"path": [
+								"pilot",
+								"update",
+								"3"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Dihar"
+								},
+								{
+									"key": "flyHour",
+									"value": "1234"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get status local",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url-tutorial7}}/pilot/status/12345",
+							"host": [
+								"{{url-tutorial7}}"
+							],
+							"path": [
+								"pilot",
+								"status",
+								"12345"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Status",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{pilot}}/pilot?licenseNumber=12345",
+									"host": [
+										"{{pilot}}"
+									],
+									"path": [
+										"pilot"
+									],
+									"query": [
+										{
+											"key": "licenseNumber",
+											"value": "12345"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n\t\"status\" : \"inactive\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get full status local",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"flyHour\" : 600,\n\t\"licenseNumber\" : \"777\",\n\t\"name\" : \"dia\"\n}"
+						},
+						"url": {
+							"raw": "{{url-tutorial7}}/pilot/full/12345",
+							"host": [
+								"{{url-tutorial7}}"
+							],
+							"path": [
+								"pilot",
+								"full",
+								"12345"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "full",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"flyHour\" : 600,\n\t\"licenseNumber\" : \"777\",\n\t\"name\" : \"dia\"\n}"
+								},
+								"url": {
+									"raw": "{{pilot}}/pilot",
+									"host": [
+										"{{pilot}}"
+									],
+									"path": [
+										"pilot"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n\t\"status\" :\t\"inactive\",\n\t\"valid-until\" : \"2025-20-30\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Flight",
+			"item": [
+				{
+					"name": "add flight",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"flightNumber\" : \"mynameJeff\",\n\t\"origin\" : \"jakarta\",\n\t\"destination\" : \"bandung\",\n\t\"time\" : \"2008-11-11\",\n\t\"pilotFlight\": {\n            \"licenseNumber\" : \"12345\"\n\t}\t\n}"
+						},
+						"url": {
+							"raw": "{{url-tutorial7}}/flight/add",
+							"host": [
+								"{{url-tutorial7}}"
+							],
+							"path": [
+								"flight",
+								"add"
+							]
+						},
+						"description": "Post and ready to go"
+					},
+					"response": []
+				},
+				{
+					"name": "update flight",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url-tutorial7}}/flight/update/4?destination=bandung&origin=jakarta&time=2008-11-11",
+							"host": [
+								"{{url-tutorial7}}"
+							],
+							"path": [
+								"flight",
+								"update",
+								"4"
+							],
+							"query": [
+								{
+									"key": "destination",
+									"value": "bandung"
+								},
+								{
+									"key": "origin",
+									"value": "jakarta"
+								},
+								{
+									"key": "time",
+									"value": "2008-11-11"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "flight",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url-tutorial7}}/flight/view/abcd",
+							"host": [
+								"{{url-tutorial7}}"
+							],
+							"path": [
+								"flight",
+								"view",
+								"abcd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all flight",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete flight",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url-tutorial7}}/flight/delete/4",
+							"host": [
+								"{{url-tutorial7}}"
+							],
+							"path": [
+								"flight",
+								"delete",
+								"4"
+							]
+						},
+						"description": "delete dis"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Airport",
+			"item": [
+				{
+					"name": "Airport In A City In Indonesia",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url-tutorial7}}/airport/jakarta",
+							"host": [
+								"{{url-tutorial7}}"
+							],
+							"path": [
+								"airport",
+								"jakarta"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

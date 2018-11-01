@@ -1,15 +1,12 @@
 package com.apap.tutorial7.controller;
 
+import com.apap.tutorial7.model.PilotModel;
 import com.apap.tutorial7.rest.PilotDetail;
 import com.apap.tutorial7.rest.Setting;
+import com.apap.tutorial7.service.PilotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import com.apap.tutorial7.model.PilotModel;
-import com.apap.tutorial7.service.PilotService;
 import org.springframework.web.client.RestTemplate;
 
 
@@ -17,8 +14,10 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("/pilot")
 public class PilotController {
 
+    // REST API START //
+
     @Autowired
-    RestTemplate restTemplate;
+    RestTemplate rest;
 
     @Bean
     public RestTemplate rest() {
@@ -28,16 +27,19 @@ public class PilotController {
     @GetMapping(value = "/status/{licenseNumber}")
     public String getStatus(@PathVariable("licenseNumber") String licenseNumber) throws Exception {
         String path = Setting.pilotUrl + "/pilot?licenseNumber=" + licenseNumber;
-        return restTemplate.getForEntity(path, String.class).getBody();
+        return rest.getForEntity(path, String.class).getBody();
     }
 
-    @RequestMapping(value = "/full/{licenseNumber}", method = RequestMethod.POST)
+    @GetMapping(value = "/full/{licenseNumber}")
     public PilotDetail postStatus(@PathVariable("licenseNumber") String licenseNumber) throws Exception {
         String path = Setting.pilotUrl + "/pilot";
         PilotModel pilot = pilotService.getPilotDetailByLicenseNumber(licenseNumber);
-        PilotDetail detail = restTemplate.postForObject(path, pilot, PilotDetail.class);
+        PilotDetail detail = rest.postForObject(path, pilot, PilotDetail.class);
         return detail;
     }
+
+
+    // REST API END //
 
     @Autowired
     private PilotService pilotService;
