@@ -1,0 +1,12 @@
+Dari Tutorial Saya Mempelajari
+-Service Producer adalah Backend (di sini adalah mockserver yang ada di Postman)
+-Service Consumer adalah frontend (di sini adalah langkah B dari bagian tutorial Service Consumer)
+-Bila menggunakan model yang bila diparse menjadi string malah rekursif sampai tidak selesai, gunakan
+	-JsonIgnoreProperties("namaVariableYangAdaDiKelasYangBerelasi")
+-GetEntity dan GetObject itu berbeda pada bagian convert dari get menuju antara
+	-ResponseEntity
+	-Object di Java
+
+Dari latihan saya mempelajari
+1. Semua yang ada di nomor ini sudah dijelaskan di tutorial
+2. Salah satu bagian yang harus dilakukan adalah mengambil API key yang saya harus buat dengan cara login menggunakan akun github saya.
